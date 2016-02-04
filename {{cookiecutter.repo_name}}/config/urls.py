@@ -8,6 +8,14 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 
+{% if cookiecutter.use_rest_framework == 'n' %}
+from rest_framework.routers import DefaultRouter
+from {{ cookiecutter.repo_name }}.users.views import UserViewSet
+
+router = DefaultRouter()
+router.register(r'users', UserViewSet)
+{% endif %}
+
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name="home"),
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name="about"),
@@ -18,6 +26,11 @@ urlpatterns = [
     # User management
     url(r'^users/', include("{{ cookiecutter.repo_name }}.users.urls", namespace="users")),
     url(r'^accounts/', include('allauth.urls')),
+
+    {% if cookiecutter.use_rest_framework == 'n' %}
+    url(r'^api/v1/', include('{{ cookiecutter.repo_name }}.authentication.urls')),
+    url(r'^api/v1/', include(router.urls)),
+    {% endif %}
 
     # Your stuff: custom urls includes go here
 

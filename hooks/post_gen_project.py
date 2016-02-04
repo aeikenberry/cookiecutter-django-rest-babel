@@ -100,6 +100,19 @@ def remove_task_app(project_directory):
     )
     shutil.rmtree(task_app_location)
 
+
+def remove_api_files(project_directory):
+
+    authentication_location = os.path.join(
+        project_directory,
+        '{{ cookiecutter.repo_name }}/authentication'
+    )
+    shutil.rmtree(authentication_location)
+
+    for f in ['api', 'permissions', 'serializers']:
+        os.remove('{{ cookiecutter.repo_name }}/users/{}'.format(f))
+
+
 # IN PROGRESS
 # def copy_doc_files(project_directory):
 #     cookiecutters_dir = DEFAULT_CONFIG['cookiecutters_dir']
@@ -124,6 +137,9 @@ make_secret_key(PROJECT_DIRECTORY)
 # 2. Removes the taskapp if celery isn't going to be used
 if '{{ cookiecutter.use_celery }}'.lower() == 'n':
     remove_task_app(PROJECT_DIRECTORY)
+
+if '{{ cookiecutter.use_rest_framework }}'.lower() == 'n':
+    remove_api_files(PROJECT_DIRECTORY)
 
 # 3. Copy files from /docs/ to {{ cookiecutter.repo_name }}/docs/
 # copy_doc_files(PROJECT_DIRECTORY)
