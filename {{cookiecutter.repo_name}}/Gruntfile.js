@@ -21,6 +21,7 @@ module.exports = function (grunt) {
       fonts: this.app + '/static/fonts',
       images: this.app + '/static/images',
       js: this.app + '/static/js',
+      es6: this.app + '/static/es6',
       manageScript: 'manage.py',
     }
   };
@@ -79,6 +80,23 @@ module.exports = function (grunt) {
       }
     },
 
+    babel: {
+      options: {
+        sourceMap: true,
+        presets: ['es2015']
+      },
+      dist: {
+        files: [
+          {
+            expand: true,
+            cwd: '<%= paths.es6 %>/',
+            src: ['*.js'],
+            dest: '<%= paths.js %>'
+          }
+        ]
+      }
+    },
+
     //see https://github.com/nDmitry/grunt-postcss
     postcss: {
       options: {
@@ -127,6 +145,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('build', [
+    'babel:dist',
     'sass:dist',
     'postcss'
   ]);
