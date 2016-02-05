@@ -39,17 +39,17 @@ THIRD_PARTY_APPS = (
     'allauth',  # registration
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
-    {% if cookiecutter.use_rest_framework == 'n' %}
+    {% if cookiecutter.use_rest_framework != 'n' %}
     'rest_framework',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
     {% endif %}
 )
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
     '{{ cookiecutter.repo_name }}.users',  # custom users app
-    {% if cookiecutter.use_rest_framework == 'n' %}
-    '{{ cookiecutter.rep_name }}.authentication'
+    {% if cookiecutter.use_rest_framework != 'n' %}
+    '{{ cookiecutter.rep_name }}.authentication',
     {% endif %}
     # Your stuff: custom apps go here
 )
@@ -242,7 +242,7 @@ BROKER_URL = env("CELERY_BROKER_URL", default='django://')
 # Location of root django.contrib.admin URL, use {% raw %}{% url 'admin:index' %}{% endraw %}
 ADMIN_URL = r'^admin/'
 
-{% if cookiecutter.use_rest_framework == 'n' %}
+{% if cookiecutter.use_rest_framework != 'n' %}
  # Django Rest Framework
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
