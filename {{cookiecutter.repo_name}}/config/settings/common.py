@@ -49,7 +49,7 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     '{{ cookiecutter.repo_name }}.users',  # custom users app
     {% if cookiecutter.use_rest_framework != 'n' %}
-    '{{ cookiecutter.rep_name }}.authentication',
+    '{{ cookiecutter.repo_name }}.authentication',
     {% endif %}
     # Your stuff: custom apps go here
 )
