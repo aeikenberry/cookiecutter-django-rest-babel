@@ -10,7 +10,7 @@ from django.views import defaults as default_views
 
 {% if cookiecutter.use_rest_framework != 'n' %}
 from rest_framework.routers import DefaultRouter
-from {{ cookiecutter.repo_name }}.users.views import UserViewSet
+from {{ cookiecutter.repo_name }}.users.api import UserViewSet
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
