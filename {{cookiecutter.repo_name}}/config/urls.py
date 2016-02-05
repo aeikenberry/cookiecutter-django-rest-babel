@@ -7,7 +7,6 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
-
 {% if cookiecutter.use_rest_framework != 'n' %}
 from rest_framework.routers import DefaultRouter
 from {{ cookiecutter.repo_name }}.users.api import UserViewSet
