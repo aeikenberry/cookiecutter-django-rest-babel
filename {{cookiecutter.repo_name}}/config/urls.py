@@ -29,6 +29,7 @@ urlpatterns = [
     {% if cookiecutter.use_rest_framework != 'n' %}
     url(r'^api/v1/', include('{{ cookiecutter.repo_name }}.authentication.urls')),
     url(r'^api/v1/', include(router.urls)),
+    url(r'^docs/', include('rest_framework_swagger.urls')),
     {% endif %}
 
     # Your stuff: custom urls includes go here

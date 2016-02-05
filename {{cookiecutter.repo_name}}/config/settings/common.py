@@ -42,6 +42,7 @@ THIRD_PARTY_APPS = (
     {% if cookiecutter.use_rest_framework != 'n' %}
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_framework_swagger',
     {% endif %}
 )
 
