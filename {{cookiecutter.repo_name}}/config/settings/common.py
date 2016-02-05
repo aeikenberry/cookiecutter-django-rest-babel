@@ -39,11 +39,18 @@ THIRD_PARTY_APPS = (
     'allauth',  # registration
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
+    {% if cookiecutter.use_rest_framework == 'n' %}
+    'rest_framework',
+    'rest_framework.authtoken'
+    {% endif %}
 )
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
     '{{ cookiecutter.repo_name }}.users',  # custom users app
+    {% if cookiecutter.use_rest_framework == 'n' %}
+    '{{ cookiecutter.rep_name }}.authentication'
+    {% endif %}
     # Your stuff: custom apps go here
 )
 
@@ -234,5 +241,25 @@ BROKER_URL = env("CELERY_BROKER_URL", default='django://')
 
 # Location of root django.contrib.admin URL, use {% raw %}{% url 'admin:index' %}{% endraw %}
 ADMIN_URL = r'^admin/'
+
+{% if cookiecutter.use_rest_framework == 'n' %}
+ # Django Rest Framework
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 100,
+    'DATETIME_FORMAT': '%Y-%m-%dT%H:%M:%S%z',
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
+{% endif %}
 
 # Your common stuff: Below this line define 3rd party library settings
