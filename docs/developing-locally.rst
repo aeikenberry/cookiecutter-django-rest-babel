@@ -19,17 +19,17 @@ Then install the requirements for your local development::
 
 .. _virtualenv: http://docs.python-guide.org/en/latest/dev/virtualenvs/
 
-Then, create a PostgreSQL database with the following command, where `[repo_name]` is what value you entered for your project's `repo_name`::
+Then, create a PostgreSQL database with the following command, where `[project_slug]` is what value you entered for your project's `project_slug`::
 
-    $ createdb [repo_name]
+    $ createdb [project_slug]
 
-`cookiecutter-django` uses the excellent `django-environ`_ package with its ``DATABASE_URL`` environment variable to simplify database configuration in your Django settings. Now all you have to do is compose a definition for ``DATABASE_URL``:
+`Cookiecutter Django` uses the excellent `django-environ`_ package with its ``DATABASE_URL`` environment variable to simplify database configuration in your Django settings. Now all you have to do is compose a definition for ``DATABASE_URL``:
 
 .. parsed-literal::
 
     $ export DATABASE_URL="postgres://*<pg_user_name>*:*<pg_user_password>*\ @127.0.0.1:\ *<pg_port>*/*<pg_database_name>*"
 
-.. _django-environ: http://django-environ.readthedocs.org
+.. _django-environ: http://django-environ.readthedocs.io
 
 You can now run the usual Django ``migrate`` and ``runserver`` commands::
 
@@ -47,6 +47,8 @@ In development you can (optionally) use MailHog_ for email testing. MailHog is b
 1. `Download the latest release`_ for your operating system
 2. Rename the executable to ``mailhog`` and copy it to the root of your project directory
 3. Make sure it is executable (e.g. ``chmod +x mailhog``)
+4. Execute mailhog from the root of your project in a new terminal window (e.g. ``./mailhog``)
+5. All emails generated from your django app can be seen on http://127.0.0.1:8025/
 
 .. _Mailhog: https://github.com/mailhog/MailHog/
 .. _Download the latest release: https://github.com/mailhog/MailHog/releases

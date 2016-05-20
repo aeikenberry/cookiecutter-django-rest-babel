@@ -1,6 +1,146 @@
 # Change Log
-All enhancements and patches to cookiecutter-django will be documented in this file.
+All enhancements and patches to Cookiecutter Django will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
+
+##[2016-05-15]
+### Added
+- Added GitLabl continuous integration article to README.rst (@dezoito)
+
+## [2016-05-13]
+### Changed
+- Update version of pyflakes to 1.2.3, django-extensions to 1.6.7 and gunicorn to 19.5.0 (@luzfcb)
+- Update version of AngularJS to 1.5.5 (@luzfcb)
+
+### Removed
+- Remove Raven 404 catch middleware. Fix #367 (@pydanny)
+
+## [2016-05-09]
+### Changed
+- Improved mailhog usage documentation on `developing-locally.rst`  (@shireenrao)
+- Replaced all `readthedocs.org` referencies to point to the new domain `readthedocs.io` (@luzfcb)
+- Update version of pyflakes (@luzfcb)
+
+## [2016-05-08]
+### Changed
+- Updated whitenoise configuration to match changes in version 3.0 (@trungdong)
+
+## [2016-05-07]
+### Added
+- Added Ubuntu 16.04 dependencies on a new dependency file `requirements.apt.xenial` (@raonyguimaraes)
+
+### Changed
+- Small improvements in ``install_os_dependencies.sh`` support new dependency file (@raonyguimaraes)
+
+## [2016-05-06]
+### Changed
+- Update version of pyflakes (@pydanny)
+
+## [2016-05-03]
+### Changed
+- Update version of Django, django-extensions, django-mailgun (@luzfcb)
+
+### [2016-05-01]
+### Changed
+- Restored the Pycharm project configuration files, that was accidentally removed in [15f350f](https://github.com/pydanny/cookiecutter-django/commit/15f350f05e2b49b4bdff0bdaa2b2ff260606e0f6) (@luzfcb @Newton715)
+
+### [2016-04-30]
+### Changed
+- Small fixes to utility scripts (@scast)
+
+### [2016-04-26]
+### Added
+- Instructions on how to install PythonAnywhere. (@hjwp)
+
+### [2016-04-25]
+### Added
+- Check to confirm that the user has a modern version of Cookiecutter. (@pydanny)
+
+### Removed
+- Removed hitch per #529 (@pydanny)
+
+### [2016-04-20]
+### Changed
+- Default to today's date in cookiecutter.json. (@audreyr)
+- Change repo_name to project_slug for clarity. (@audreyr)
+- Transform project name to lowercase for slug. (@audreyr)
+
+### [2016-04-19]
+### Added
+- "Got Questions?" section in our README.rst. Yes, there is now a cookiecutter-django tag on Stack Overflow! (@pydanny)
+
+### Changed
+- Update usage instructions with new prompts, minor cleanup (@audreyr)
+
+### [2016-04-18]
+### Added
+- removing duplication of depends_on in docker-compose.yml (@noisy)
+
+### [2016-04-17]
+### Added
+- "Built with Cookiecutter Django" badge to generated project README (@audreyr)
+- New introductory article (@krzysztofzuraw)
+
+### Changed
+- Quote consistency, single quotes everywhere! (@blopker)
+
+### [2016-04-15]
+### Changed
+- Major project generation cleanup (@jayfk)
+
+### Removed
+- Deleting unnecessary .idea dir from MAIN directory (@noisy)
+
+### [2016-04-14]
+### Added
+- Added typecheck in .pylintrc to fix pylint-django gets "no-member" error (@solvire)
+
+### Changed
+- Downgrading python-dateutil to version 2.4.2 because pykwalify==1.5.0 (required by HitchTest) uses a [pinned version of python-dateutil](https://github.com/Grokzen/pykwalify/blob/1.5.0/setup.py#L31) (@noisy)
+- Update Pillow version to 3.2.0 (security fix) (@luzfcb)
+
+### [2016-04-12]
+### Changed
+- celeryworker and celerybeat missing the correct dockerfile (@jayfk)
+
+### [2016-04-08]
+### Changed
+- Move to named docker volumes (@jayfk)
+
+### [2016-04-07]
+### Changed
+- Pycharm Support (including debugging in Docker) @noisy
+- Set the correct License @epileptic-fish
+
+### [2016-03-23]
+### Changed
+- Fixed issue on LICENSE file generation (@romanosipenko)
+- In install_python_dependencies.sh file, Fixed wrong reference to python3 if use_python2 was set to y (@luzfcb @noisy)
+
+### [2016-03-16]
+### Changed
+- Set the correct postgres username in dev.yml (@calculuscowboy)
+
+## [2016-03-14]
+### Changed
+- Enforce `repo_name` as proper python module (@catherinedevlin)
+
+## [2016-03-08]
+### Changed
+- Docker configuration now uses docker-compose format v2 (@aeikenberry)
+- Make sure that STATIC_URL != MEDIA_URL (@cdvv7788)
+- fix minor typos in project README (@menzenski)
+- Updated docker docs (@jayfk)
+
+### Added
+- Added database controls for docker (@jayfk)
+
+
+## [2016-03-05]
+### Changed
+- Update version of Django, celery, django-test-plus (@luzfcb)
+- Update version of Hitch tests dependencies: jupyter_client (@luzfcb)
+- Update 'now' date in cookiecutter.json (@luzfcb)
+- Update the usage example in README (@luzfcb)
 
 ## [2016-03-01]
 ### Changed
@@ -411,7 +551,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Styles that already exist in Bootstrap 4 (or 3) (@audreyr)
 
 ### Changed
-- Fix issue #296 - change login.html to use [get_providers](https://github.com/pennersr/django-allauth/blob/master/allauth/socialaccount/templatetags/socialaccount.py#L84-L93) templatetag because ``allauth.socialaccount`` context processor now is [deprecated](http://django-allauth.readthedocs.org/en/latest/changelog.html#from-0-21-0) (@luzfcb)
+- Fix issue #296 - change login.html to use [get_providers](https://github.com/pennersr/django-allauth/blob/master/allauth/socialaccount/templatetags/socialaccount.py#L84-L93) templatetag because ``allauth.socialaccount`` context processor now is [deprecated](http://django-allauth.readthedocs.io/en/latest/changelog.html#from-0-21-0) (@luzfcb)
 
 ## [2015-09-09]
 ### Added

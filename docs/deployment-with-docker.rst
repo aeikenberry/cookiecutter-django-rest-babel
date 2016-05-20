@@ -16,8 +16,8 @@ to run docker (with compose) on production.
 
 Prerequisites:
 
-* docker (tested with 1.8)
-* docker-compose (tested with 0.4)
+* docker (at least 1.10)
+* docker-compose (at least 1.6)
 
 Before you start, check out the `docker-compose.yml` file in the root of this project. This is where each component
 of this application gets its configuration from. It consists of a `postgres` service that runs the database, `redis`
@@ -41,7 +41,7 @@ This pass all incoming requests on `nginx-proxy`_ to the nginx service your appl
 
 .. _nginx-proxy: https://github.com/jwilder/nginx-proxy
 
-Postgres is saving its database files to `/data/{{cookiecutter.repo_name}}/postgres` by default. Change that if you wan't
+Postgres is saving its database files to the `postgres_data` volume by default. Change that if you wan't
 something else and make sure to make backups since this is not done automatically.
 
 To get started, pull your code from source control (don't forget the `.env` file) and change to your projects root
@@ -67,7 +67,7 @@ To create a superuser, run::
 
 If you need a shell, run::
 
-   docker-compose run django python manage.py shell_plus
+   docker-compose run django python manage.py shell
 
 To get an output of all running containers.
 
@@ -89,19 +89,19 @@ it needs to do is to run `docker-compose up` in your projects root directory.
 
 If you are using `supervisor`, you can use this file as a starting point::
 
-    [program:{{cookiecutter.repo_name}}]
+    [program:{{cookiecutter.project_slug}}]
     command=docker-compose up
-    directory=/path/to/{{cookiecutter.repo_name}}
+    directory=/path/to/{{cookiecutter.project_slug}}
     redirect_stderr=true
     autostart=true
     autorestart=true
     priority=10
 
 
-Place it in `/etc/supervisor/conf.d/{{cookiecutter.repo_name}}.conf` and run::
+Place it in `/etc/supervisor/conf.d/{{cookiecutter.project_slug}}.conf` and run::
 
     supervisorctl reread
-    supervisorctl start {{cookiecutter.repo_name}}
+    supervisorctl start {{cookiecutter.project_slug}}
 
 To get the status, run::
 
