@@ -96,12 +96,12 @@ def remove_api_files(project_directory):
 
     authentication_location = os.path.join(
         project_directory,
-        '{{ cookiecutter.repo_name }}/authentication'
+        '{{ cookiecutter.project_slug }}/authentication'
     )
     shutil.rmtree(authentication_location)
 
     for f in ['api', 'permissions', 'serializers']:
-        os.remove('{{ cookiecutter.repo_name }}/users/{}'.format(f))
+        os.remove('{{ cookiecutter.project_slug }}/users/{}'.format(f))
 
 
 def remove_pycharm_dir(project_directory):
